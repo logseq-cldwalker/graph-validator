@@ -1,4 +1,5 @@
-(ns action)
+(ns action
+  (:require [nbb.core :as nbb]))
 
 (defn action
   ;; deps passed by index.mjs
@@ -6,7 +7,7 @@
   (let [{:strs [actionsCore actionsGithub]} (js->clj deps)]
     (try
       (let [name-to-greet (.getInput actionsCore "who-to-greet")
-            _ (.log js/console (str "Hello " name-to-greet "!"))
+            _ (.log js/console (str "Hello " name-to-greet " with version " (nbb/version) "!"))
             time (.toTimeString (js/Date.))
             _ (.setOutput actionsCore "time" time)
             payload (.. actionsGithub -context -payload)
