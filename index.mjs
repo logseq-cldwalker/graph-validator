@@ -1,4 +1,4 @@
-import { loadFile } from 'nbb';
+import { loadFile } from '@logseq/nbb-logseq';
 import { resolve, dirname } from 'path';
 import * as actionsCore from '@actions/core';
 import * as actionsGithub from '@actions/github';

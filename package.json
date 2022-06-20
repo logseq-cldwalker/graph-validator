@@ -1,5 +1,5 @@
 {
-  "name": "nbb-action-example",
+  "name": "graph-validator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/borkdude/nbb-action-example.git"
+    "url": "git+https://github.com/logseq-cldwalker/graph-validator.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/borkdude/nbb-action-example/issues"
+    "url": "https://github.com/logseq-cldwalker/graph-validator/issues"
   },
-  "homepage": "https://github.com/borkdude/nbb-action-example#readme",
+  "homepage": "https://github.com/logseq-cldwalker/graph-validator#readme",
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
-    "nbb": "0.0.73"
+    "@logseq/nbb-logseq": "^0.5.103"
   }
 }
