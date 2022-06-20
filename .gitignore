@@ -1,3 +1,5 @@
 /node_modules
 /.lsp
 /.clj-kondo/.cache
+.yarn/cache/
+.yarn/install-state.gz
