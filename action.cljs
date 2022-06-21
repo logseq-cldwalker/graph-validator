@@ -1,11 +1,11 @@
 (ns action
   (:require [nbb.core :as nbb]
-            [logseq.graph-parser.cli :as gp-cli]))
+            [sitefox.web :as web]))
 
 (defn action
   ;; deps passed by index.mjs
   [deps]
-  (prn :CLI gp-cli/parse-graph)
+  (prn :FN web/serve)
   (let [{:strs [actionsCore actionsGithub]} (js->clj deps)]
     (try
       (let [name-to-greet (.getInput actionsCore "who-to-greet")

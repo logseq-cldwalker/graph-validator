@@ -21,6 +21,7 @@
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "^5.0.0",
+    "@chr15m/sitefox": "https://github.com/chr15m/sitefox",
     "@logseq/db": "https://github.com/logseq/logseq#workspace=@logseq/db&head=dev/yarn-workspaces",
     "@logseq/graph-parser": "https://github.com/logseq/logseq#workspace=@logseq/graph-parser&head=dev/yarn-workspaces",
     "@logseq/nbb-logseq": "^0.5.103"
