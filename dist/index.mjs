@@ -8930,8 +8930,7 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 const __dirname = (0,path__WEBPACK_IMPORTED_MODULE_1__.dirname)(".");
 const theFile = __nccwpck_require__.ab + "action.cljs";
-(0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .addClassPath */ .YO)(__nccwpck_require__.ab + "src");
-(0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .addClassPath */ .YO)(__nccwpck_require__.ab + "src1");
+(0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .addClassPath */ .YO)(__dirname);
 const { action } = await (0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .loadFile */ .xl)(__nccwpck_require__.ab + "action.cljs");
 action( { actionsCore: /*#__PURE__*/ (_actions_core__WEBPACK_IMPORTED_MODULE_2___namespace_cache || (_actions_core__WEBPACK_IMPORTED_MODULE_2___namespace_cache = __nccwpck_require__.t(_actions_core__WEBPACK_IMPORTED_MODULE_2__, 2))), actionsGithub: /*#__PURE__*/ (_actions_github__WEBPACK_IMPORTED_MODULE_3___namespace_cache || (_actions_github__WEBPACK_IMPORTED_MODULE_3___namespace_cache = __nccwpck_require__.t(_actions_github__WEBPACK_IMPORTED_MODULE_3__, 2)))} );
 

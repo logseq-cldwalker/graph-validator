@@ -5,7 +5,6 @@ import * as actionsGithub from '@actions/github';
 
 const __dirname = dirname(".");
 const theFile = resolve(__dirname, 'action.cljs');
-addClassPath(resolve(__dirname, 'node_modules/@logseq/graph-parser/src'));
-addClassPath(resolve(__dirname, 'node_modules/@logseq/db/src'));
+addClassPath(__dirname);
 const { action } = await loadFile(theFile);
 action( { actionsCore, actionsGithub} );
