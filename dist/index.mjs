@@ -8923,6 +8923,8 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1017);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(2438);
 /* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(7960);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7147);
+
 
 
 
@@ -8930,6 +8932,9 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 const __dirname = (0,path__WEBPACK_IMPORTED_MODULE_1__.dirname)(".");
 const theFile = __nccwpck_require__.ab + "action.cljs";
+console.log("DIR", __dirname);
+console.log("FILES", (0,fs__WEBPACK_IMPORTED_MODULE_4__.readdirSync)(__dirname));
+console.log("ACTION", __nccwpck_require__.ab + "action.cljs");
 (0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .addClassPath */ .YO)(__nccwpck_require__.ab + "src");
 (0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .addClassPath */ .YO)(__nccwpck_require__.ab + "src1");
 const { action } = await (0,_logseq_nbb_logseq__WEBPACK_IMPORTED_MODULE_0__/* .loadFile */ .xl)(__nccwpck_require__.ab + "action.cljs");
