@@ -10,9 +10,9 @@ runs:
   steps:
     - name: Set up Node
       uses: actions/setup-node@v3
-      with:
-        cache: 'yarn'
-        cache-dependency-path: yarn.lock
+      # with:
+      #   cache: 'yarn'
+        # cache-dependency-path: yarn.lock
 
     - name: Fetch yarn deps
       run: yarn install --immutable
