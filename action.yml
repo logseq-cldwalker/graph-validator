@@ -16,6 +16,8 @@ runs:
 
     - name: Fetch yarn deps
       run: yarn install --immutable
+      shell: bash
 
     - name: Run nbb tests
       run: yarn test ${{ inputs.directory }}
+      shell: bash

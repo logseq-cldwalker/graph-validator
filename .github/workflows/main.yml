@@ -2,10 +2,7 @@ on: [push]
 
 jobs:
   hello_world_job:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     name: A job to say hello
     steps:
       - name: Hello world action step
