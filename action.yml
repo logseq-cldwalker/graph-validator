@@ -4,20 +4,30 @@ inputs:
   directory:
     description: 'Directory to parse'
     required: true
-    default: '.'
+    default: '..'
+
 runs:
   using: "composite"
   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        repository: logseq-cldwalker/graph-validator
+        ref: with-composite
+        path: graph-validator
+
     - name: Set up Node
       uses: actions/setup-node@v3
-      # with:
-      #   cache: 'yarn'
-        # cache-dependency-path: yarn.lock
+    #   with:
+    #     cache: 'yarn'
+    #     cache-dependency-path: yarn.lock
+    - run: ls
+      shell: bash
 
     - name: Fetch yarn deps
-      run: yarn install --immutable
+      run: cd graph-validator && yarn install --immutable
       shell: bash
 
     - name: Run nbb tests
-      run: yarn test ${{ inputs.directory }}
+      run: cd graph-validator && yarn test ${{ inputs.directory }}
       shell: bash
