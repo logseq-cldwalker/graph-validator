@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: logseq-cldwalker/graph-validator@main
+        uses: logseq-cldwalker/graph-validator@with-composite
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
