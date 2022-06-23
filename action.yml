@@ -14,20 +14,18 @@ runs:
       with:
         repository: logseq-cldwalker/graph-validator
         ref: with-composite
-        path: graph-validator
+        path: _graph-validator
 
     - name: Set up Node
       uses: actions/setup-node@v3
-    #   with:
-    #     cache: 'yarn'
-    #     cache-dependency-path: yarn.lock
-    - run: ls
-      shell: bash
+      with:
+        cache: 'yarn'
+        cache-dependency-path: _graph-validator/yarn.lock
 
     - name: Fetch yarn deps
-      run: cd graph-validator && yarn install --immutable
+      run: cd _graph-validator && yarn install --immutable
       shell: bash
 
     - name: Run nbb tests
-      run: cd graph-validator && yarn test ${{ inputs.directory }}
+      run: cd _graph-validator && yarn test ${{ inputs.directory }}
       shell: bash
