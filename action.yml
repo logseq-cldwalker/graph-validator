@@ -4,7 +4,7 @@ inputs:
   directory:
     description: 'Directory to parse'
     required: true
-    default: '..'
+    default: '.'
 
 runs:
   using: "composite"

@@ -4,7 +4,9 @@
             [logseq.graph-parser.cli :as gp-cli]
             [logseq.graph-parser.text :as gp-text]
             [logseq.db.rules :as rules]
-            [clojure.set :as set]))
+            [clojure.set :as set]
+            [clojure.edn :as edn]
+            ["path" :as path]))
 
 (def db-conn (atom nil))
 (def all-asts (atom nil))
@@ -40,7 +42,7 @@
                               (gp-text/get-block-ref (str (first (:arguments (second %))))))))
        (map #(-> % second :arguments first gp-text/get-block-ref))))
 
-(deftest no-invalid-block-refs
+(deftest block-refs-are-valid
   (let [block-refs (ast->block-refs @all-asts)]
     (println "Found" (count block-refs) "block refs")
     (is (empty?
@@ -55,7 +57,7 @@
                (map (comp :id :block/properties))
                set))))))
 
-(deftest no-invalid-embed-refs
+(deftest embed-block-refs-are-valid
   (let [embed-refs (ast->embed-refs @all-asts)]
     (println "Found" (count embed-refs) "embed block refs")
     (is (empty?
@@ -70,7 +72,36 @@
                (map (comp :id :block/properties))
                set))))))
 
+(defn- ast->queries
+  [ast]
+  (->> ast
+       (mapcat (fn [nodes]
+                 (keep
+                  (fn [subnode]
+                    (when (= ["Custom" "query"] (take 2 subnode))
+                      (get subnode 4)))
+                  nodes)))))
+
+(deftest advanced-queries-are-valid
+  (let [query-strings (ast->queries @all-asts)]
+    (println "Found" (count query-strings) "queries")
+    (is (empty? (keep #(let [query (try (edn/read-string %)
+                                     (catch :default _ nil))]
+                         (when (nil? query) %))
+                      query-strings))
+        "Queries are valid EDN")
+
+    (is (empty? (keep #(let [query (try (edn/read-string %)
+                                     (catch :default _ nil))]
+                         (when (not (contains? query :query)) %))
+                      query-strings))
+        "Queries have required :query key")))
+
 ;; run this function with: nbb-logseq -m test/run-tests
 (defn run-tests [& args]
-  (setup-graph (or (first args) "."))
-  (t/run-tests 'test))
+  (let [dir* (or (first args) ".")
+        ;; Move up a directory since the script is run in subdirectory of a
+        ;; project
+        dir (if (path/isAbsolute dir*) dir* (path/join ".." dir*))]
+    (setup-graph dir)
+    (t/run-tests 'test)))
